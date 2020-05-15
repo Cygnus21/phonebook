@@ -1,0 +1,60 @@
+@main(title = "Phone book"){
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      @* Here's where we render the page title `String`. *@
+      <title>Phone book</title>
+      <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+      <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    </head>
+    <body onload="listAll();">
+      <div class="container">
+      <form>
+        <p><input type="text" class="searchName" name="nameSubstring" placeholder="Search by name">
+          <button onclick="return searchByName();">Search</button>
+      </form>
+      <form>
+        <input type="text" class="searchPhone" name="phoneSubstring" placeholder="Search by number">
+          <button onclick="return searchByPhone();">Search</button>
+      </form>
+      <form>
+          <button class="clearSearch" onclick="listAll();">Clear search</button>
+      </form>
+      <div>
+        <button class="buttonAdd addNew" onclick="openForm();">Add new contact</button>
+      </div>
+      <div id="add">
+        <div id="popup">
+          <button class="popup-close-add" onclick="closeForm(this);">Close</button>
+          <div class="main1">
+            <div class="add"><label for="addName">Name</label><input type="text" id="addName" name="Name"></div>
+            <div class="add"><label for="addNumber">Number</label><input type="text" id="addNumber" name="Number"></div>
+          </div>
+          <div class="addClick"><button onclick="addContact();">Add</button></div>
+        </div>
+      </div>
+        <div id="update">
+            <div id="popup">
+              <button class="popup-close-upd" onclick="closeForm(this);">Close</button>
+              <div class="main2">
+                <div class="update"><label for="updName">Name</label><input type="text" id="updName" name="Name"></div>
+                <div class="update"><label for="updNumber">Number</label><input type="text" id="updNumber" name="Number"></div>
+              </div>
+              <div class="updClick"><button onclick="updateContact(this);">Update</button></div>
+            </div>
+        </div>
+      <div id="table" >
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Phone number</th>
+          </tr>
+          <tbody>
+          </tbody>
+          }
+        </table>
+      </div>
+      <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+      </div>
+    </body>
+  </html>
