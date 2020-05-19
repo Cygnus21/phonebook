@@ -12,6 +12,10 @@ table {
     border: 5px;
 }
 
+tbody {
+    background-color: powderblue;
+}
+
 th {
     color: black;
     border: solid 1px black;
