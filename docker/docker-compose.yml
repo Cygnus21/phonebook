@@ -1,0 +1,30 @@
+version: '3'
+services:
+    postgres:
+            container_name: psql
+            image: postgres:9.4
+            restart: always
+            environment:
+             - POSTGRES_DB=phonedb
+             - POSTGRES_USER=phoneuser
+             - POSTGRES_PASSWORD=phonepass
+            ports:
+             - 5432:5432
+            networks:
+              net:
+                ipv4_address: 172.18.0.35
+    web:
+       build: .
+       ports:
+        - 9000:9000
+       links:
+        - postgres
+       networks:
+        net:
+          ipv4_address: 172.18.0.36
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16

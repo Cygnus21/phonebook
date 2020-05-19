@@ -46,7 +46,7 @@ function createNewRows(phone) {
 function searchByPhone() {
     var number = document.querySelector(".searchPhone").value;
     var request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:9000/phones/searchByPhone?phoneSubstring='+number, true);
+    request.open('GET', 'http://172.18.0.36:9000/phones/searchByPhone?phoneSubstring='+number, true);
     request.onload = function () {
         var data = JSON.parse(this.responseText);
         if (request.status >= 200 && request.status < 400) {
@@ -72,7 +72,7 @@ function searchByPhone() {
 function searchByName() {
     var name = document.querySelector(".searchName").value;
     var request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:9000/phones/searchByName?nameSubstring='+name, true);
+    request.open('GET', 'http://172.18.0.36:9000/phones/searchByName?nameSubstring='+name, true);
     request.onload = function () {
         var data = JSON.parse(this.responseText);
         if (request.status >= 200 && request.status < 400) {
@@ -105,7 +105,7 @@ function addContact() {
     console.log(body);
     if (confirm("Are you sure that you want to add this contact?")) {
         var request = new XMLHttpRequest();
-        request.open('POST', 'http://localhost:9000/phones/add', true);
+        request.open('POST', 'http://172.18.0.36:9000/phones/add', true);
         request.setRequestHeader("Content-Type","application/json");
         request.onload = function () {
                 var data = this.responseText;
@@ -136,7 +136,7 @@ function updateContact(currentElem) {
     var body = JSON.stringify(contact);
     if (confirm("Are you sure that you want to update this contact?")) {
         var request = new XMLHttpRequest();
-        request.open('POST', 'http://localhost:9000/phones/update/'+id, true);
+        request.open('POST', 'http://172.18.0.36:9000/phones/update/'+id, true);
         request.setRequestHeader("Content-Type","application/json");
         request.onload = function () {
             var data = this.responseText;
@@ -158,7 +158,7 @@ function deleteContact(currentElem) {
     var id = parent.id;
     if (confirm("Are you sure that you want to delete this contact?")) {
         var request = new XMLHttpRequest();
-        request.open('DELETE', 'http://localhost:9000/phones/delete/'+id, true)
+        request.open('DELETE', 'http://172.18.0.36:9000/phones/delete/'+id, true)
         request.onload = function () {
             var data = this.response;
             if (request.status >= 200 && request.status < 400) {
@@ -175,7 +175,7 @@ function deleteContact(currentElem) {
 
 function listAll() {
     var request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:9000/phones', true);
+    request.open('GET', 'http://172.18.0.36:9000/phones', true);
     request.onload = function () {
         var data = JSON.parse(this.responseText);
         if (request.status >= 200 && request.status < 400) {
